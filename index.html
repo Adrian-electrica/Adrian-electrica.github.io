@@ -1,55 +1,412 @@
 <!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Álbum de Trabajos | Ing. Rosas Matias Adrian</title>
 
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
-
-
-
-
-
+  <style>
+    body {
+      background-color: #0f172a; /* Fondo oscuro moderno (Slate/Navy) */
+      color: #f8fafc;
+      padding-top: 56px; /* Compensación por el navbar fijo */
     }
 
+    /* Hero Banner con superposición oscura para legibilidad del texto */
+    .hero-section {
+      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
+                  url('images/web_adrian.jpg') center/cover no-repeat;
+      padding: 5rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
+    /* Tarjetas personalizadas con estilo elegante */
+    .custom-card {
+      background-color: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
+    .custom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    
+    .carousel-item img {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    /* Botón flotante para llamada a la acción (WhatsApp/Contacto) */
+    .btn-contact {
+      background-color: #496ca1;
+      border: none;
+      font-weight: 500;
+    }
+    /* Sección compacta de Antes y Después debajo del álbum */
+.before-after-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.before-after-box {
+  --ba-width: min(88vw, 560px);
+  --ba-handle-width: 44px;
+  position: relative;
+  width: var(--ba-width);
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.before-after-box > img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.before-after-box .ba-img-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+.before-after-box .ba-img-wrapper img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--ba-width);
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.before-after-box .ba-label {
+  position: absolute;
+  top: 0.75rem;
+  z-index: 3;
+  color: #fff;
+  background-color: rgba(15, 23, 42, 0.7);
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.before-after-box:hover .ba-label {
+  opacity: 1;
+}
+
+.before-after-box .ba-label-before {
+  left: 0.75rem;
+}
+
+.before-after-box .ba-label-after {
+  right: 0.75rem;
+  background-color: #f95540;
+}
+
+.before-after-box .ba-handle {
+  position: absolute;
+  top: 0;
+  left: calc(50% - var(--ba-handle-width) / 2);
+  width: var(--ba-handle-width);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  z-index: 2;
+}
+
+.before-after-box .ba-handle-line {
+  width: 2px;
+  flex-grow: 1;
+  background-color: #ffffff;
+}
+
+.before-after-box .ba-handle-circle {
+  width: var(--ba-handle-width);
+  height: var(--ba-handle-width);
+  color: #ffffff;
+  background-color: rgba(15, 23, 42, 0.45);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 0.85rem;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navegación superior -->
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-sm-8 col-md-7">
+            <h4 class="text-white fw-bold">Ing. Rosas Matias Adrian</h4>
+            <p class="text-white">Servicios profesionales de electricidad residencial con 18 años de experiencia, cámaras de seguridad y proyectos de iluminación personalizada.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1">
+            <h4 class="text-white fw-bold">Contacto</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="tel:5519750764" class="text-info text-decoration-none">📞 Teléfono: 55 1975 0764</a></li>
+              <li class="mb-2"><a href="mailto:contacto@ejemplo.com" class="text-info text-decoration-none">✉️ Enviar correo</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-dark bg-dark fixed-top shadow">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center fw-bold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning-charge-fill me-2 text-warning" viewBox="0 0 16 16">
+            <path d="M8.941.435a.5.5 0 0 0-.882 0l-6 12A.5.5 0 0 0 2.5 13h4.98L6.05 15.685a.5.5 0 0 0 .858.465l6-12A.5.5 0 0 0 12.5 3h-4.98l1.421-2.565z"/>
+          </svg>
+          Álbum de Trabajos
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Banner Principal (Hero) -->
+    <section class="hero-section text-center">
+      <div class="container py-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h1 class="display-5 fw-bold text-white mb-3">Portafolio de Proyectos Electrónicos y Eléctricos</h1>
+            <p class="lead text-light mb-4">Especialistas en instalaciones eléctricas, mantenimiento preventivo y correctivo, colocación de cámaras de seguridad CCTV y proyectos de iluminación. Garantía por escrito de 1 año en cada trabajo.</p>
+            <a href="https://wa.me/525519750764" class="btn btn-primary btn-lg btn-contact px-4">Solicitar Cotización</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección del Álbum de Tarjetas -->
+    <div class="album py-5">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+          <!-- Proyecto 1 -->
+          <div class="col">
+            <div class="card custom-card shadow-sm h-100">
+              <div id="carouselCard1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><img src="images/bosques17.jpg" class="d-block w-100" alt="Proyecto Bosques 1"></div>
+                  <div class="carousel-item"><img src="images/bosques2.jpg" class="d-block w-100" alt="Proyecto Bosques 2"></div>
+                  <div class="carousel-item"><img src="images/bosques3.jpg" class="d-block w-100" alt="Proyecto Bosques 3"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCard1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCard1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-white">Proyecto Pabellón Bosques</h5>
+                <p class="card-text text-light">Iluminación de pasillos y escaleras diseñados para eliminar puntos oscuros en áreas transitadas del hogar.</p>
+                <small class="text-info fw-bold">Instalación y diseño</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 2 -->
+          <div class="col">
+            <div class="card custom-card shadow-sm h-100">
+              <div id="carouselCard2" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><img src="images/lope1.jpg" class="d-block w-100" alt="Lope de Vega 1"></div>
+                  <div class="carousel-item"><img src="images/lope2.jpg" class="d-block w-100" alt="Lope de Vega 2"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCard2" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCard2" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-white">Proyecto Dep. Lope de Vega</h5>
+                <p class="card-text text-light">Renovación integral del sistema eléctrico dando mayor vida y luminosidad a espacios interiores residenciales.</p>
+                <small class="text-info fw-bold">Remodelación eléctrica</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 3 -->
+          <div class="col">
+            <div class="card custom-card shadow-sm h-100">
+              <div id="carouselCard3" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><img src="images/resta1.jpg" class="d-block w-100" alt="Restaurante 1"></div>
+                  <div class="carousel-item"><img src="images/resta2.jpg" class="d-block w-100" alt="Restaurante 2"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCard3" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCard3" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-white">Iluminación Comercial (Restaurante)</h5>
+                <p class="card-text text-light">Remodelación completa de circuitos e instalación de sistemas de luz LED de alta eficiencia para ambientes comerciales.</p>
+                <small class="text-info fw-bold">Iluminación LED</small>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
     </div>
 
+    <!-- Sección Comparador Antes y Después -->
+    <section class="before-after-section py-5">
+      <div class="container text-center">
+        <h2 class="h4 fw-bold text-white mb-2">Antes y Después</h2>
+        <p class="text-secondary small mb-4">Arrastra la barra horizontal para comparar el estado inicial y el resultado final.</p>
+
+        <div id="ba-slider" class="before-after-box">
+          <!-- Imagen inferior (Antes) -->
+          <img src="images/antes.jpg" alt="Antes del trabajo">
+
+          <!-- Imagen superior recortada (Después) -->
+          <div class="ba-img-wrapper">
+            <img src="images/despues.jpg" alt="Después del trabajo">
+          </div>
+
+          <span class="ba-label ba-label-before">Antes</span>
+          <span class="ba-label ba-label-after">Después</span>
+
+          <div class="ba-handle">
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-circle">
+              <i class="fas fa-chevron-left"></i>
+              <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="ba-handle-line"></div>
+          </div>
+        </div>
       </div>
-          </div>
-        </div>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    </section>
 
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  </main>
+
+  
+
+
+  <footer class="py-4 border-top border-secondary text-center text-muted">
+    <div class="container">
+      <p class="mb-1 text-light">&copy; 2026 Ing. Rosas Matias Adrian — Portafolio de Trabajos Eléctricos</p>
+      <a href="#" class="text-info text-decoration-none">Volver arriba ↑</a>
     </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </footer>
 
+</body>
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
+  <script>
+    const baSlider = document.querySelector("#ba-slider");
+    const baWrapper = document.querySelector("#ba-slider .ba-img-wrapper");
+    const baHandle = document.querySelector("#ba-slider .ba-handle");
 
+    if (baSlider && baWrapper && baHandle) {
+      let isBaLocked = false;
 
+      if (window.VanillaTilt) {
+        VanillaTilt.init(baSlider, {
+          max: 4,
+          speed: 700,
+          scale: 1.01
+        });
+      }
 
+      function updateBaSlider(event) {
+        if (isBaLocked) return;
 
+        const rect = baSlider.getBoundingClientRect();
+        const width = baSlider.clientWidth;
+        const handleWidth = baHandle.clientWidth;
 
+        const clientX = event.touches && event.touches.length > 0
+          ? event.touches[0].clientX
+          : event.clientX;
 
+        if (typeof clientX !== "number") return;
 
+        let x = clientX - rect.left;
+        if (x < 0) x = 0;
+        if (x > width) x = width;
 
+        const rightPercent = ((1 - x / width) * 100).toFixed(4);
+        const leftPercent = ((x / width) * 100).toFixed(4);
 
+        baWrapper.style.width = `${rightPercent}%`;
+        baHandle.style.left = `calc(${leftPercent}% - ${handleWidth / 2}px)`;
+      }
 
+      baSlider.addEventListener("mousemove", updateBaSlider);
+      baSlider.addEventListener("touchmove", updateBaSlider, { passive: true });
+
+      baSlider.addEventListener("mousedown", (e) => {
+        isBaLocked = false;
+        updateBaSlider(e);
+      });
+
+      baSlider.addEventListener("touchstart", (e) => {
+        isBaLocked = false;
+        updateBaSlider(e);
+      }, { passive: true });
+
+      baSlider.addEventListener("mouseup", () => {
+        isBaLocked = true;
+      });
+
+      baSlider.addEventListener("touchend", () => {
+        isBaLocked = true;
+      });
+
+      baSlider.addEventListener("mouseleave", () => {
+        isBaLocked = false;
+      });
+    }
+  </script>
+</html>
